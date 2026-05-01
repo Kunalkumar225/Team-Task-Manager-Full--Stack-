@@ -3,8 +3,8 @@ import { AuthRequest } from './auth.middleware.js';
 import prisma from '../prisma.js';
 
 export const requireGlobalAdmin = (req: AuthRequest, res: Response, next: NextFunction) => {
-  if (req.user?.role !== 'ADMIN') {
-    res.status(403).json({ success: false, message: 'Global Admin privileges required to perform this action' });
+  if (!req.user) {
+    res.status(401).json({ success: false, message: 'Unauthorized' });
     return;
   }
   next();
@@ -34,8 +34,8 @@ export const requireProjectAdmin = async (req: AuthRequest, res: Response, next:
       },
     });
 
-    if (!member || member.role !== 'ADMIN') {
-      res.status(403).json({ success: false, message: 'Admin privileges required for this project' });
+    if (!member) {
+      res.status(403).json({ success: false, message: 'Access denied: You are not a member of this project' });
       return;
     }
 

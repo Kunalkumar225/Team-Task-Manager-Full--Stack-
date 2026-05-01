@@ -59,7 +59,7 @@ const Dashboard = () => {
       <EmptyState
         icon={FolderKanban}
         title="Welcome to TaskFlow"
-        description={user?.role === 'ADMIN' ? "You don't have any projects yet. Create your first project to start managing tasks." : "You haven't been assigned to any projects yet. Wait for an admin to add you to a project."}
+        description="You don't have any projects yet. Create your first project to start managing tasks."
         action={
           <Link to="/projects" className="btn-primary px-5 py-2.5">
             Go to Projects
@@ -192,8 +192,8 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Team Workload Section (Admins Only) */}
-      {user?.role === 'ADMIN' && data.teamWorkload && data.teamWorkload.length > 0 && (
+      {/* Team Workload Section */}
+      {data.teamWorkload && data.teamWorkload.length > 0 && (
         <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden" style={{ boxShadow: 'var(--shadow-card)' }}>
           <div className="p-6 border-b border-slate-100">
             <h2 className="font-bold text-slate-800 text-base">Team Workload</h2>

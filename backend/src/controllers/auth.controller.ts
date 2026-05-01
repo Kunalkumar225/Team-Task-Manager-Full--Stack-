@@ -59,10 +59,6 @@ export const login = async (req: Request, res: Response) => {
       return;
     }
 
-    if (role === 'ADMIN' && user.role !== 'ADMIN') {
-      res.status(403).json({ success: false, message: 'Access denied: You cannot log in as an Admin with a Member account. Please select Member.' });
-      return;
-    }
 
     const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET || 'fallback_secret', {
       expiresIn: (process.env.JWT_EXPIRES_IN || '7d') as any,

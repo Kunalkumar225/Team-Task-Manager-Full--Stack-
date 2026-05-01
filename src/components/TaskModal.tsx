@@ -49,13 +49,11 @@ export const TaskModal = ({ isOpen, onClose, onSuccess, projectId, task, members
     setLoading(true);
     
     const payload: any = { status };
-    if (userRole === 'ADMIN') {
-      payload.title = title;
-      payload.description = description;
-      payload.priority = priority;
-      payload.dueDate = dueDate || null;
-      payload.assignedToId = assignedToId || null;
-    }
+    payload.title = title;
+    payload.description = description;
+    payload.priority = priority;
+    payload.dueDate = dueDate || null;
+    payload.assignedToId = assignedToId || null;
 
     try {
       if (task) {
@@ -74,7 +72,7 @@ export const TaskModal = ({ isOpen, onClose, onSuccess, projectId, task, members
     }
   };
 
-  const isAdmin = userRole === 'ADMIN';
+  const isAdmin = true; // All roles have full access
   const isAssignedToMe = task?.assignedToId === user?.id;
   const canEditState = isAdmin || isAssignedToMe;
 

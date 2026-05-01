@@ -44,7 +44,6 @@ const ProjectsList = () => {
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight" style={{ fontFamily: 'Plus Jakarta Sans, Inter, sans-serif' }}>Projects</h1>
           <p className="text-slate-500 text-sm mt-1">Manage and track your team's ongoing initiatives.</p>
         </div>
-        {user?.role === 'ADMIN' && (
           <button
             id="new-project-btn"
             onClick={() => setIsModalOpen(true)}
@@ -53,7 +52,6 @@ const ProjectsList = () => {
             <Plus size={17} />
             New Project
           </button>
-        )}
       </div>
 
       {loading ? (
@@ -73,11 +71,9 @@ const ProjectsList = () => {
           title="No projects found"
           description="You aren't a member of any projects yet."
           action={
-            user?.role === 'ADMIN' ? (
               <button onClick={() => setIsModalOpen(true)} className="btn-primary px-5 py-2.5">
                 <Plus size={16} /> Create Project
               </button>
-            ) : undefined
           }
         />
       ) : (

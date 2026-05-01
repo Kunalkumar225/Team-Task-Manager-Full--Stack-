@@ -140,10 +140,7 @@ const Login = () => {
                   <span className={`text-xs mt-0.5 ${role === 'MEMBER' ? 'text-indigo-600/80' : 'text-slate-500'}`}>Join & complete tasks</span>
                 </button>
               </div>
-              <p className="mt-2.5 text-[11px] text-slate-500 bg-slate-50 p-2 rounded-lg border border-slate-100 flex items-start gap-1.5 leading-relaxed">
-                <span className="text-indigo-500 font-bold">Guideline:</span> 
-                Members cannot log in with the Admin role selected. However, Admins have unrestricted access and can log in using either role.
-              </p>
+
             </div>
 
             {/* Email */}

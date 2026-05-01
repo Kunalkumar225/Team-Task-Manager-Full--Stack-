@@ -105,7 +105,7 @@ const SingleProject = () => {
   if (!project) return null;
 
   const myRole = project.members.find((m: any) => m.userId === user?.id)?.role || 'MEMBER';
-  const isAdmin = myRole === 'ADMIN';
+  const isAdmin = true; // All roles have full access
   const doneTasks = project.tasks.filter((t: any) => t.status === 'DONE').length;
   const pct = project.tasks.length > 0 ? Math.round((doneTasks / project.tasks.length) * 100) : 0;
 
